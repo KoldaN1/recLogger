@@ -1,6 +1,7 @@
 # recLogger
 
 The `recLogger` library provides an easy way to log messages to the console with customizable options, including prefixes, timestamps, log levels (e.g., ERROR, INFO, DEBUG), and colored output.
+
 **Warning:** This library uses [chalk](https://www.npmjs.com/package/chalk) for colorizing output. If you are using chalk in your project, you should use the same version in both places to avoid potential conflicts.
 
 ## Table of Contents
