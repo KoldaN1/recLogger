@@ -1,0 +1,24 @@
+{
+  "name": "reclogger",
+  "version": "1.0.1",
+  "description": "Simple logger for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoldaN1/recLogger.git"
+  },
+  "keywords": [
+    "[\"logger\"",
+    "\"log\"",
+    "\"simple\"]"
+  ],
+  "author": "KoldaN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KoldaN1/recLogger/issues"
+  },
+  "homepage": "https://github.com/KoldaN1/recLogger#readme"
+}
