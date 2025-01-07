@@ -1,6 +1,6 @@
 {
   "name": "reclogger",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Simple logger for Node.js",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,9 @@
     "url": "git+https://github.com/KoldaN1/recLogger.git"
   },
   "keywords": [
-    "[\"logger\"",
-    "\"log\"",
-    "\"simple\"]"
+    "logger",
+    "log",
+    "simple"
   ],
   "author": "KoldaN",
   "license": "MIT",

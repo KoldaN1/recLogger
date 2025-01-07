@@ -222,4 +222,3 @@ In this example, the logger will print messages with the prefix `Server`, withou
 ## Conclusion
 
 The `recLogger` library is a lightweight and customizable logging tool that can be easily integrated into your Node.js applications.
-
