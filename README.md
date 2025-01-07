@@ -32,7 +32,7 @@ npm install recLogger
 Then, import the library in your Node.js application:
 
 ```js
-import recLogger from 'recLogger';
+const recLogger = require('recLogger');
 ```
 
 ---
@@ -179,7 +179,7 @@ logger.log('Start', 'Application started', 'INFO');
 ### Basic Usage
 
 ```js
-import recLogger from 'recLogger';
+const recLogger = require('recLogger');
 const logger = new recLogger();
 
 // Log a general message (LOG level)
