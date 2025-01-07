@@ -52,7 +52,6 @@ class recLogger {
     log(...args) {
         let str = '';
         const colorType = args[3] || this.colors.LOG;
-        console.log(colorType);
         const useColor = this.color && colorType;
 
         if (this.prefix) str += `[${this.prefix}] `;
