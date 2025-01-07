@@ -52,6 +52,7 @@ class recLogger {
     log(...args) {
         let str = '';
         const colorType = args[3] || this.colors.LOG;
+        console.log(colorType);
         const useColor = this.color && colorType;
 
         if (this.prefix) str += `[${this.prefix}] `;
@@ -71,7 +72,7 @@ class recLogger {
      * @param {string} text - the text to log
      */
     error(action, text) {
-        this.log(action, text, 'ERROR', 'ERROR');
+        this.log(action, text, 'ERROR', this.colors.ERROR);
     }
     
      /**
@@ -80,7 +81,7 @@ class recLogger {
      * @param {string} text - the text to log
      */
     warn(action, text) {
-        this.log(action, text, 'WARN', 'WARN');
+        this.log(action, text, 'WARN', this.colors.WARN);
     }
 
      /**
@@ -89,7 +90,7 @@ class recLogger {
      * @param {string} text - the text to log
      */
     info(action, text) {
-        this.log(action, text, 'INFO', 'INFO');
+        this.log(action, text, 'INFO', this.colors.INFO);
     }
 
      /**
@@ -98,7 +99,7 @@ class recLogger {
      * @param {string} text - the text to log
      */
     debug(action, text) {
-        this.log(action, text, 'DEBUG', 'DEBUG');
+        this.log(action, text, 'DEBUG', this.colors.DEBUG);
     }
 
      /**
@@ -107,7 +108,7 @@ class recLogger {
      * @param {string} text - the text to log
      */
     success(action, text) {
-        this.log(action, text, 'SUCCESS', 'SUCCESS');
+        this.log(action, text, 'SUCCESS', this.colors.SUCCESS);
     }
 }
 
