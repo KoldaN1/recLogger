@@ -1,8 +1,9 @@
 {
   "name": "reclogger",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Simple logger for Node.js",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/KoldaN1/recLogger/issues"
   },
-  "homepage": "https://github.com/KoldaN1/recLogger#readme"
+  "homepage": "https://github.com/KoldaN1/recLogger#readme",
+  "dependencies": {
+    "chalk": "^5.4.1"
+  }
 }

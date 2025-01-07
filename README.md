@@ -62,7 +62,7 @@ new recLogger({
 - `level` (boolean, optional): Whether to include the log level (e.g., `LOG`, `ERROR`, `INFO`). Default is `true`.
 - `action` (boolean, optional): Whether to include the action in the log message (e.g., the name of the action). Default is `true`.
 - `color` (boolean, optional): Whether to colorize the log messages. Default is `true`.
-- `colors` (Object, optional): A dictionary mapping log types (e.g., `LOG`, `ERROR`, `INFO`) to ANSI color codes. Default is the `colorsList` defined in the code.
+- `colors` (Object, optional): A dictionary mapping log types (e.g., `LOG`, `ERROR`, `INFO`) to chalk colors. Default is the `colorsList` defined in the code.
 
 ### Methods
 
@@ -138,12 +138,12 @@ By default, the following ANSI color codes are mapped to each log type:
 
 ```js
 const colorsList = {
-    LOG: 2,      // Green
-    ERROR: 1,    // Red
-    WARN: 3,     // Yellow
-    INFO: 6,     // Cyan
-    DEBUG: 8,    // Light gray
-    SUCCESS: 2   // Green
+    LOG: "green",      // Green
+    ERROR: "red",    // Red
+    WARN: "yellow",     // Yellow
+    INFO: "cyan",     // Cyan
+    DEBUG: "gray",    // Light gray
+    SUCCESS: "green"   // Green
 };
 ```
 

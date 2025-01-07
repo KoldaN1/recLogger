@@ -5,14 +5,14 @@
  * https://github.com/KoldaN1/recLogger
  **/
 
-
+import chalk from 'chalk';
 const colorsList = {
-    LOG: 32,      // Green
-    ERROR: 31,    // Red
-    WARN: 33,     // Yellow
-    INFO: 36,     // Cyan
-    DEBUG: 37,    // Light gray
-    SUCCESS: 32   // Green
+    LOG: 'green',      // Green
+    ERROR: 'red',    // Red
+    WARN: 'yellow',     // Yellow
+    INFO: 'cyan',     // Cyan
+    DEBUG: 'gray',    // Light gray
+    SUCCESS: 'green'   // Green
 };
 
 class recLogger {
@@ -54,15 +54,14 @@ class recLogger {
         const colorType = args[3] || this.colors.LOG;
         const useColor = this.color && colorType;
 
-        if (useColor) str += `\x1b[${colorType}m`;
         if (this.prefix) str += `[${this.prefix}] `;
         if (this.time) str += `(${new Date().toLocaleTimeString()}) `;
         if (this.level && args[2]) str += `(${args[2]}) `;
         str += `>> `;
         if (this.action && args[0]) str += `${args[0]} | `;
         str += args[1];
-        if (useColor) str += `\x1b[0m`;
-        console.log(str);
+        if (useColor) console.log(chalk.bold[colorType](str));
+        else console.log(str);
     }
 
     
@@ -112,4 +111,4 @@ class recLogger {
     }
 }
 
-module.exports = recLogger;
+export default recLogger;
