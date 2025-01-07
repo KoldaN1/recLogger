@@ -5,7 +5,7 @@
  * https://github.com/KoldaN1/recLogger
  **/
 
-import chalk from 'chalk';
+const chalk = require('chalk');
 const colorsList = {
     LOG: 'green',      // Green
     ERROR: 'red',    // Red
