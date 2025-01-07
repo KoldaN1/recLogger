@@ -111,4 +111,4 @@ class recLogger {
     }
 }
 
-export default recLogger;
+module.exports = recLogger;
