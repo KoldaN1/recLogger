@@ -7,12 +7,12 @@
 
 
 const colorsList = {
-    LOG: 2,      // Green
-    ERROR: 1,    // Red
-    WARN: 3,     // Yellow
-    INFO: 6,     // Cyan
-    DEBUG: 8,    // Light gray
-    SUCCESS: 2   // Green
+    LOG: 32,      // Green
+    ERROR: 31,    // Red
+    WARN: 33,     // Yellow
+    INFO: 36,     // Cyan
+    DEBUG: 37,    // Light gray
+    SUCCESS: 32   // Green
 };
 
 class recLogger {
