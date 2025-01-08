@@ -16,29 +16,38 @@ const colorsList = {
 };
 
 class recLogger {
+    
     /**
-     * Initializes a new recLogger instance
-     * @param {Object} [options] - the options to use for this logger
-     * @param {string} [options.prefix] - the prefix to use for this logger
-     * @param {boolean} [options.time=true] - whether to include the time in the log message
-     * @param {boolean} [options.level=true] - whether to include the level in the log message
-     * @param {boolean} [options.action=true] - whether to include the action in the log message
-     * @param {boolean} [options.color=true] - whether to include the color in the log message
+     * Constructs a new instance of the recLogger class with the specified options.
+     * 
+     * @param {Object} options - Configuration options for the logger.
+     * @param {string} [options.prefix=''] - A string to prefix each log message.
+     * @param {boolean} [options.time=true] - Whether to include a timestamp in the log message.
+     * @param {boolean} [options.level=true] - Whether to include the log level in the log message.
+     * @param {boolean} [options.action=true] - Whether to include the action in the log message.
+     * @param {boolean} [options.color=true] - Whether to colorize the log messages.
+     * @param {boolean} [options.bold=true] - Whether to use bold text in the log messages.
+     * @param {Object} [options.colors=colorsList] - A mapping of log levels to colors. Colors: black, red, green, yellow, blue, magenta, cyan, white, blackBright (alias: gray, grey), redBright, greenBright, yellowBright, blueBright, magentaBright, cyanBright, whiteBright
+     * @param {string} [options.pattern='[{prefix}] ({time}) ({level}) >> {action} | {text}'] - The pattern for formatting log messages.
      */
     constructor({
-        prefix = '',
+        prefix = 'LOG',
         time = true,
         level = true,
         action = true,
         color = true,
-        colors = colorsList
+        bold = true,
+        colors = colorsList,
+        pattern = '[{prefix}] ({time}) ({level}) >> {action} | {text}'
     }) {
         this.prefix = prefix;
         this.time = time;
         this.level = level;
         this.action = action;
         this.color = color;
-        this.colors = colorsList;
+        this.bold = bold;
+        this.colors = colors;
+        this.pattern = pattern;
     
     };
 
@@ -50,18 +59,26 @@ class recLogger {
      * @param {string} [color] - the color to use for the log message (e.g. LOG, ERROR, WARN, INFO, DEBUG, SUCCESS)
      */
     log(...args) {
-        let str = '';
-        const colorType = args[3] || this.colors.LOG;
-        const useColor = this.color && colorType;
+        try {
+            let str = this.pattern;
+            const colorType = args[3] || this.colors.LOG;
+            const useColor = this.color && colorType;
 
-        if (this.prefix) str += `[${this.prefix}] `;
-        if (this.time) str += `(${new Date().toLocaleTimeString()}) `;
-        if (this.level && args[2]) str += `(${args[2]}) `;
-        str += `>> `;
-        if (this.action && args[0]) str += `${args[0]} | `;
-        str += args[1];
-        if (useColor) console.log(chalk.bold[colorType](str));
-        else console.log(str);
+            let chalkf = chalk;
+            if (this.bold) chalkf = chalkf.bold;
+            if (useColor) chalkf = chalkf[colorType];
+
+            if (this.prefix && str.includes('{prefix}')) str = str.replaceAll('{prefix}', this.prefix);
+            if (this.time && str.includes('{time}')) str = str.replaceAll('{time}', new Date().toLocaleTimeString());
+            if (this.level && args[2] && str.includes('{level}')) str = str.replaceAll('{level}', args[2]);
+            if (this.action && args[0] && str.includes('{action}')) str = str.replaceAll('{action}', args[0]);
+            if (args[1] && str.includes('{text}')) str = str.replaceAll('{text}', args[1]);
+
+            console.log(chalkf(str));
+        } catch (error) {
+            console.log(error);
+            return;
+        }
     }
 
     
@@ -112,3 +129,4 @@ class recLogger {
 }
 
 module.exports = recLogger;
+
