@@ -18,7 +18,6 @@
 - [**License**](#license)
 - [**Contributing**](#contributing)
 
-
 ---
 
 ## Installation
@@ -34,7 +33,7 @@ npm install recLogger
 ### Import the Logger
 
 ```javascript
-const recLogger = require('recLogger');
+const recLogger = require("recLogger");
 ```
 
 ### Create an Instance of the Logger
@@ -43,21 +42,22 @@ You can create an instance of the logger by passing an optional configuration ob
 
 ```javascript
 const logger = new recLogger({
-    prefix: 'App',               // Prefix for log messages
-    time: true,                  // Include timestamp in logs
-    level: true,                 // Include log level in logs
-    action: true,                // Include action in logs
-    color: true,                 // Enable color for log levels
-    bold: true,                  // Enable bold text
-    colors: {                    // Custom color mapping for each log level
-        LOG: 'green',
-        ERROR: 'red',
-        WARN: 'yellow',
-        INFO: 'cyan',
-        DEBUG: 'gray',
-        SUCCESS: 'green'
-    },
-    pattern: '[{prefix}] ({time}) ({level}) >> {action} | {text}' // Custom log message pattern
+  prefix: "App", // Prefix for log messages
+  time: true, // Include timestamp in logs
+  level: true, // Include log level in logs
+  action: true, // Include action in logs
+  color: true, // Enable color for log levels
+  bold: true, // Enable bold text
+  colors: {
+    // Custom color mapping for each log level
+    LOG: "green",
+    ERROR: "red",
+    WARN: "yellow",
+    INFO: "cyan",
+    DEBUG: "gray",
+    SUCCESS: "green",
+  },
+  pattern: "[{prefix}] ({time}) ({level}) >> {action} | {text}", // Custom log message pattern
 });
 ```
 
@@ -70,7 +70,11 @@ The logger supports several logging methods corresponding to common log levels:
 Logs a message with a custom action, message text, log level, and optional color. If no color is provided, the default level color will be used.
 
 ```javascript
-logger.log('DataProcessing', 'Started processing data', 'INFO', 'cyan');
+//with action
+logger.log("DataProcessing", "Started processing data", "INFO", "cyan");
+
+//only text
+logger.log("hello world!");
 ```
 
 #### 2. `error(action, text)`
@@ -78,7 +82,7 @@ logger.log('DataProcessing', 'Started processing data', 'INFO', 'cyan');
 Logs an error message in red.
 
 ```javascript
-logger.error('DatabaseConnection', 'Failed to connect to the database');
+logger.error("DatabaseConnection", "Failed to connect to the database");
 ```
 
 #### 3. `warn(action, text)`
@@ -86,7 +90,7 @@ logger.error('DatabaseConnection', 'Failed to connect to the database');
 Logs a warning message in yellow.
 
 ```javascript
-logger.warn('MemoryUsage', 'Memory usage is high');
+logger.warn("MemoryUsage", "Memory usage is high");
 ```
 
 #### 4. `info(action, text)`
@@ -94,7 +98,7 @@ logger.warn('MemoryUsage', 'Memory usage is high');
 Logs an informational message in cyan.
 
 ```javascript
-logger.info('FileUpload', 'File upload completed successfully');
+logger.info("FileUpload", "File upload completed successfully");
 ```
 
 #### 5. `debug(action, text)`
@@ -102,7 +106,7 @@ logger.info('FileUpload', 'File upload completed successfully');
 Logs a debug message in gray.
 
 ```javascript
-logger.debug('APIRequest', 'Request payload: { id: 1 }');
+logger.debug("APIRequest", "Request payload: { id: 1 }");
 ```
 
 #### 6. `success(action, text)`
@@ -110,7 +114,7 @@ logger.debug('APIRequest', 'Request payload: { id: 1 }');
 Logs a success message in green.
 
 ```javascript
-logger.success('Authentication', 'User login successful');
+logger.success("Authentication", "User login successful");
 ```
 
 ### Customization
@@ -124,34 +128,14 @@ You can customize the behavior of the logger by configuring the following option
 - **color** (`boolean`): Whether to colorize the log messages (default is `true`).
 - **bold** (`boolean`): Whether to use bold text for logs (default is `true`).
 - **colors** (`Object`): Custom color mapping for each log level (default colors provided).
-- **pattern** (`string`): A string format pattern to customize the structure of log messages. 
+- **pattern** (`string`): A string format pattern to customize the structure of log messages.
 
-Available colors:
-    - `black`
-    - `red`
-    - `green`
-    - `yellow`
-    - `blue`
-    - `magenta`
-    - `cyan`
-    - `white`
-    - `blackBright (alias: gray, grey)`
-    - `redBright`
-    - `greenBright`
-    - `yellowBright`
-    - `blueBright`
-    - `magentaBright`
-    - `cyanBright`
-    - `whiteBright`
+Available colors: - `black` - `red` - `green` - `yellow` - `blue` - `magenta` - `cyan` - `white` - `blackBright (alias: gray, grey)` - `redBright` - `greenBright` - `yellowBright` - `blueBright` - `magentaBright` - `cyanBright` - `whiteBright`
 
-Available placeholders:
-    - `{prefix}` - the prefix of the log.
-    - `{time}` - the timestamp of the log.
-    - `{level}` - the log level (e.g., LOG, ERROR, INFO).
-    - `{action}` - the action being logged.
-    - `{text}` - the main log message.
+Available placeholders: - `{prefix}` - the prefix of the log. - `{time}` - the timestamp of the log. - `{level}` - the log level (e.g., LOG, ERROR, INFO). - `{action}` - the action being logged. - `{text}` - the main log message.
 
 For example, if you wanted a custom log pattern like this:
+
 ```
 [Prefix] Time: [Time] Level: [Level] - Action: [Action] => Message: [Text]
 ```
@@ -160,21 +144,22 @@ You could set the `pattern` like this:
 
 ```javascript
 const logger = new recLogger({
-    pattern: '[{prefix}] Time: [{time}] Level: [{level})] - Action: [{action}] => Message: [{text}]'
+  pattern:
+    "[{prefix}] Time: [{time}] Level: [{level})] - Action: [{action}] => Message: [{text}]",
 });
 ```
 
 ### Example
 
 ```javascript
-const recLogger = require('recLogger');
+const recLogger = require("recLogger");
 const logger = new recLogger();
 
-logger.log('FileUpload', 'Uploading file to server', 'INFO');
-logger.error('ServerError', 'Internal server error occurred');
-logger.warn('HighTraffic', 'High traffic detected');
-logger.debug('Request', 'GET /api/data');
-logger.success('Payment', 'Payment processed successfully');
+logger.log("FileUpload", "Uploading file to server", "INFO");
+logger.error("ServerError", "Internal server error occurred");
+logger.warn("HighTraffic", "High traffic detected");
+logger.debug("Request", "GET /api/data");
+logger.success("Payment", "Payment processed successfully");
 ```
 
 ### Methods Overview

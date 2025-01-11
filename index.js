@@ -16,7 +16,7 @@ const colorsList = {
 };
 
 class recLogger {
-    
+
     /**
      * Constructs a new instance of the recLogger class with the specified options.
      * 
@@ -48,7 +48,7 @@ class recLogger {
         this.bold = bold;
         this.colors = colors;
         this.pattern = pattern;
-    
+
     };
 
     /**
@@ -71,8 +71,12 @@ class recLogger {
             if (this.prefix && str.includes('{prefix}')) str = str.replaceAll('{prefix}', this.prefix);
             if (this.time && str.includes('{time}')) str = str.replaceAll('{time}', new Date().toLocaleTimeString());
             if (this.level && args[2] && str.includes('{level}')) str = str.replaceAll('{level}', args[2]);
-            if (this.action && args[0] && str.includes('{action}')) str = str.replaceAll('{action}', args[0]);
-            if (args[1] && str.includes('{text}')) str = str.replaceAll('{text}', args[1]);
+            if (this.action && args[0] && str.includes('{action}') && args.length > 1) str = str.replaceAll('{action}', args[0]);
+            if (args.length == 1 && str.includes('{text}')) {
+                str = str.replaceAll('{text}', args[0]);
+            } else if (args.length > 1 && str.includes('{text}')) {
+                str = str.replaceAll('{text}', args[1]);
+            }
 
             console.log(chalkf(str));
         } catch (error) {
@@ -81,7 +85,7 @@ class recLogger {
         }
     }
 
-    
+
     /**
      * Logs an error message to the console with the specified action and text
      * @param {string} action - the action to log
@@ -90,43 +94,42 @@ class recLogger {
     error(action, text) {
         this.log(action, text, 'ERROR', this.colors.ERROR);
     }
-    
-     /**
-     * Logs an error message to the console with the specified action and text
-     * @param {string} action - the action to log
-     * @param {string} text - the text to log
-     */
+
+    /**
+    * Logs an error message to the console with the specified action and text
+    * @param {string} action - the action to log
+    * @param {string} text - the text to log
+    */
     warn(action, text) {
         this.log(action, text, 'WARN', this.colors.WARN);
     }
 
-     /**
-     * Logs an error message to the console with the specified action and text
-     * @param {string} action - the action to log
-     * @param {string} text - the text to log
-     */
+    /**
+    * Logs an error message to the console with the specified action and text
+    * @param {string} action - the action to log
+    * @param {string} text - the text to log
+    */
     info(action, text) {
         this.log(action, text, 'INFO', this.colors.INFO);
     }
 
-     /**
-     * Logs an error message to the console with the specified action and text
-     * @param {string} action - the action to log
-     * @param {string} text - the text to log
-     */
+    /**
+    * Logs an error message to the console with the specified action and text
+    * @param {string} action - the action to log
+    * @param {string} text - the text to log
+    */
     debug(action, text) {
         this.log(action, text, 'DEBUG', this.colors.DEBUG);
     }
 
-     /**
-     * Logs an error message to the console with the specified action and text
-     * @param {string} action - the action to log
-     * @param {string} text - the text to log
-     */
+    /**
+    * Logs an error message to the console with the specified action and text
+    * @param {string} action - the action to log
+    * @param {string} text - the text to log
+    */
     success(action, text) {
         this.log(action, text, 'SUCCESS', this.colors.SUCCESS);
     }
 }
 
 module.exports = recLogger;
-
