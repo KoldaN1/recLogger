@@ -73,6 +73,7 @@ class recLogger {
             if (this.level && args[2] && str.includes('{level}')) str = str.replaceAll('{level}', args[2]);
             if (this.action && args[0] && str.includes('{action}') && args.length > 1) str = str.replaceAll('{action}', args[0]);
             if (args.length == 1 && str.includes('{text}')) {
+                str = str.replaceAll('{action}', '--');
                 str = str.replaceAll('{text}', args[0]);
             } else if (args.length > 1 && str.includes('{text}')) {
                 str = str.replaceAll('{text}', args[1]);
