@@ -22,10 +22,10 @@
 
 ## Installation
 
-To install the `recLogger` package, use npm:
+To install the `reclogger` package, use npm:
 
 ```bash
-npm install recLogger
+npm install relLogger
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ npm install recLogger
 ### Import the Logger
 
 ```javascript
-const recLogger = require("recLogger");
+const recLogger = require("reclogger");
 ```
 
 ### Create an Instance of the Logger
